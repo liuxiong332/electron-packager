@@ -79,7 +79,11 @@ module.exports = {
         ncp(templatePath, tempPath, cb)
       },
       function (cb) {
-        ncp(opts.dir, appPath, {filter: userIgnoreFilter(opts), dereference: true}, cb)
+      	if (opts.dir) {
+	        ncp(opts.dir, appPath, {filter: userIgnoreFilter(opts), dereference: true}, cb)
+      	} else {
+          cb()
+        }
       }
     ]
 
